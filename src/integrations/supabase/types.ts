@@ -415,6 +415,62 @@ export type Database = {
           },
         ]
       }
+      orders: {
+        Row: {
+          created_at: string
+          id: string
+          line_user_id: string
+          omise_charge_id: string | null
+          payment_url: string | null
+          price_per_unit: number
+          quantity: number
+          service_id: string
+          service_name: string
+          status: string
+          total_price: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          line_user_id: string
+          omise_charge_id?: string | null
+          payment_url?: string | null
+          price_per_unit: number
+          quantity?: number
+          service_id: string
+          service_name: string
+          status?: string
+          total_price: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          line_user_id?: string
+          omise_charge_id?: string | null
+          payment_url?: string | null
+          price_per_unit?: number
+          quantity?: number
+          service_id?: string
+          service_name?: string
+          status?: string
+          total_price?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           created_at: string | null
@@ -518,6 +574,36 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      services: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean
+          price_per_unit: number
+          service_name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          price_per_unit: number
+          service_name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          price_per_unit?: number
+          service_name?: string
+          updated_at?: string
+        }
+        Relationships: []
       }
       session_participants: {
         Row: {
