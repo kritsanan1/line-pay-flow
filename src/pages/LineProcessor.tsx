@@ -277,26 +277,33 @@ const LineProcessor = () => {
                 <div className="text-center py-4">กำลังโหลด...</div>
               ) : (
                 <div className="space-y-3 max-h-96 overflow-y-auto">
-                  {orders?.map((order) => (
-                    <div key={order.id} className="border rounded-lg p-3 space-y-2">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h4 className="font-medium">{order.service_name}</h4>
-                          <p className="text-sm text-gray-600">จำนวน: {order.quantity} | รวม: {formatPrice(order.total_price)}</p>
-                          <p className="text-xs text-gray-400">{formatDateTime(order.created_at)}</p>
-                        </div>
-                        {getStatusBadge(order.status)}
-                      </div>
-                      {order.payment_url && order.status === 'pending' && (
-                        <div className="text-xs">
-                          <a href={order.payment_url} target="_blank" rel="noopener noreferrer" 
-                             className="text-blue-500 hover:underline">
-                            ลิงก์ชำระเงิน
-                          </a>
-                        </div>
-                      )}
+                  {orders?.length === 0 ? (
+                    <div className="text-center py-8 text-gray-500">
+                      <MessageSquare className="w-12 h-12 mx-auto mb-2 opacity-50" />
+                      <p>ยังไม่มีออเดอร์</p>
                     </div>
-                  ))}
+                  ) : (
+                    orders?.map((order) => (
+                      <div key={order.id} className="border rounded-lg p-3 space-y-2">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h4 className="font-medium">{order.service_name}</h4>
+                            <p className="text-sm text-gray-600">จำนวน: {order.quantity} | รวม: {formatPrice(order.total_price)}</p>
+                            <p className="text-xs text-gray-400">{formatDateTime(order.created_at)}</p>
+                          </div>
+                          {getStatusBadge(order.status)}
+                        </div>
+                        {order.payment_url && order.status === 'pending' && (
+                          <div className="text-xs">
+                            <a href={order.payment_url} target="_blank" rel="noopener noreferrer" 
+                               className="text-blue-500 hover:underline">
+                              ลิงก์ชำระเงิน
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    ))
+                  )}
                 </div>
               )}
             </CardContent>

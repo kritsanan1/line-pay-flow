@@ -73,7 +73,7 @@ serve(async (req) => {
           
           if (serviceError || !services) {
             console.log('Service not found:', serviceError)
-            await replyToLine(replyToken, `ไม่พบบริการ "${serviceName}" กรุณาเลือกจาก: บริการA, บริการB, บริการC`)
+            await replyToLine(replyToken, `ไม่พบบริการ "${serviceName}"\n\nบริการที่มี:\n• บริการA (100 บาท)\n• บริการB (250 บาท)\n• บริการC (500 บาท)`)
             continue
           }
           
@@ -125,7 +125,7 @@ serve(async (req) => {
         } else {
           // Invalid format
           console.log('Invalid command format')
-          await replyToLine(replyToken, '❌ รูปแบบคำสั่งไม่ถูกต้อง\n\n✅ กรุณาส่งตามรูปแบบ:\n"สั่งซื้อ [บริการ] [จำนวน]"\n\nตอนนี้มีบริการ:\n• บริการA (100 บาท)\n• บริการB (250 บาท)\n• บริการC (500 บาท)\n\nตัวอย่าง: สั่งซื้อ บริการA 2')
+          await replyToLine(replyToken, '❌ รูปแบบคำสั่งไม่ถูกต้อง\n\n✅ กรุณาส่งตามรูปแบบ:\n"สั่งซื้อ [บริการ] [จำนวน]"\n\nบริการที่มี:\n• บริการA (100 บาท)\n• บริการB (250 บาท)\n• บริการC (500 บาท)\n\n💡 ตัวอย่าง: สั่งซื้อ บริการA 2')
         }
       }
     }

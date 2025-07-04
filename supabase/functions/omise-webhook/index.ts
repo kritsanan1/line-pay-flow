@@ -140,7 +140,7 @@ async function sendLineMessage(userId: string, message: string) {
         'Authorization': `Bearer ${lineAccessToken}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(pushData)
+      body: JSON.stringify(replyData)
     })
     
     if (!response.ok) {
