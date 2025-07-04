@@ -1,7 +1,6 @@
-
 import { HomeIcon, CreditCardIcon } from "lucide-react";
-import Index from "./pages/Index";
-import LineProcessor from "./pages/LineProcessor";
+import Index from "@features/auth/pages/Index";
+import LineProcessor from "@features/orders/pages/LineProcessor";
 
 export const navItems = [
   {
