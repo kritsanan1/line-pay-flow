@@ -1,0 +1,75 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" font-size="14">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+        </marker>
+      </defs>
+
+      <!-- Components -->
+      <rect x="50" y="50" width="150" height="80" rx="10" ry="10" fill="#e0f7fa" stroke="#00bcd4" stroke-width="2"/>
+      <text x="125" y="95" text-anchor="middle" fill="#333">Frontend App</text>
+      <text x="125" y="115" text-anchor="middle" fill="#555" font-size="12">(React, Vite, Shadcn)</text>
+
+      <rect x="300" y="50" width="150" height="80" rx="10" ry="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+      <text x="375" y="95" text-anchor="middle" fill="#333">Supabase Backend</text>
+      <text x="375" y="115" text-anchor="middle" fill="#555" font-size="12">(Database, Auth, Storage)</text>
+
+      <rect x="550" y="50" width="150" height="80" rx="10" ry="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+      <text x="625" y="95" text-anchor="middle" fill="#333">Supabase Edge Functions</text>
+      <text x="625" y="115" text-anchor="middle" fill="#555" font-size="12">(line-webhook, omise-webhook)</text>
+
+      <rect x="50" y="200" width="150" height="60" rx="10" ry="10" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+      <text x="125" y="235" text-anchor="middle" fill="#333">LINE Messaging API</text>
+
+      <rect x="50" y="300" width="150" height="60" rx="10" ry="10" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+      <text x="125" y="335" text-anchor="middle" fill="#333">Omise Payment Gateway</text>
+
+      <!-- Relationships and Data Flow -->
+
+      <!-- Frontend to Supabase Backend -->
+      <line x1="200" y1="90" x2="300" y2="90" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="250" y="80" text-anchor="middle" font-size="12" fill="#555">Data Fetch/Mutate</text>
+
+      <!-- Supabase Backend to Frontend (Realtime) -->
+      <line x1="300" y1="100" x2="200" y2="100" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="250" y="110" text-anchor="middle" font-size="12" fill="#555">Realtime Updates</text>
+
+      <!-- Supabase Edge Functions to Supabase Backend -->
+      <line x1="550" y1="90" x2="450" y2="90" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="500" y="80" text-anchor="middle" font-size="12" fill="#555">DB Operations</text>
+
+      <!-- LINE Messaging API to Supabase Edge Functions (line-webhook) -->
+      <line x1="200" y1="230" x2="550" y2="150" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="375" y="190" text-anchor="middle" font-size="12" fill="#555">User Message Webhook</text>
+
+      <!-- Supabase Edge Functions (line-webhook) to LINE Messaging API -->
+      <line x1="550" y1="160" x2="200" y2="240" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="375" y="210" text-anchor="middle" font-size="12" fill="#555">Reply/Push Message</text>
+
+      <!-- Supabase Edge Functions (line-webhook) to Omise -->
+      <line x1="625" y1="130" x2="125" y2="300" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="375" y="250" text-anchor="middle" font-size="12" fill="#555">Create Payment</text>
+
+      <!-- Omise to Supabase Edge Functions (omise-webhook) -->
+      <line x1="200" y1="330" x2="550" y2="170" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="375" y="280" text-anchor="middle" font-size="12" fill="#555">Payment Status Webhook</text>
+
+      <!-- Supabase Edge Functions (omise-webhook) to LINE Messaging API -->
+      <line x1="625" y1="180" x2="125" y2="260" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="375" y="310" text-anchor="middle" font-size="12" fill="#555">Payment Confirmation</text>
+
+      <!-- Database Structure -->
+      <rect x="300" y="200" width="150" height="80" rx="10" ry="10" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"/>
+      <text x="375" y="235" text-anchor="middle" fill="#333">Database Tables</text>
+      <text x="375" y="255" text-anchor="middle" fill="#555" font-size="12">(services, orders, profiles, etc.)</text>
+
+      <line x1="375" y1="130" x2="375" y2="200" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="385" y="165" text-anchor="start" font-size="12" fill="#555">Schema</text>
+
+      <!-- Authentication Flow -->
+      <rect x="50" y="400" width="150" height="60" rx="10" ry="10" fill="#ffebee" stroke="#f44336" stroke-width="2"/>
+      <text x="125" y="435" text-anchor="middle" fill="#333">User Authentication</text>
+
+      <line x1="200" y1="430" x2="300" y2="120" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+      <text x="250" y="300" text-anchor="middle" font-size="12" fill="#555">Auth with Supabase</text>
+    </svg>
